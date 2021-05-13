@@ -3,6 +3,7 @@ import discord
 import datetime
 from discord.ext import commands, tasks
 from itertools import cycle
+from keep_alive import keep_alive
 import os
 
 client = commands.Bot(command_prefix=".")
@@ -10,7 +11,7 @@ status = cycle([".help"])
 
 client.remove_command("help")
 foot = "\".help\" para todos los comandos"
-TOKEN = "ODMyMzc3Mzg0MTQxMDYyMTc0.YHi52Q.lh1jhO6CJhpPO9M5XYWr8khTZqs"
+
 
 # Startup
 @client.event
@@ -104,7 +105,7 @@ async def help(ctx):
         "**Comandos**\n.help (Todos los comandos en el servidor)"
         "\n.info (Información del servidor)\n.ppt (Piedra, Papel, Tijeras)"
         "\n.random10 (Número al azar del 0 al 10)\n.random100 (Número al azar del 0 al 100)"
-        "\n.repe (El bot repite lo que escribas)\n.mongollland (Invitación para MongollLand)",
+        "\n.repe (El bot repite lo que escribas)\n.mongollland (Información de MongollLand)",
         timestamp=datetime.datetime.utcnow(),
         color=discord.Colour.dark_blue())
     embed.add_field(
@@ -166,11 +167,11 @@ async def repe_error(ctx, error):
 async def mongollland(ctx):
     await ctx.channel.purge(limit=1)
     embed = discord.Embed(title=f"**Invitación para MongollLand**",
-                          description="\nhttps://discord.gg/UcW5cc37Ad",
+                          description="**Discord**: https://discord.gg/UcW5cc37Ad\n**Página Web**: Próximamente",
                           timestamp=datetime.datetime.utcnow(),
                           color=discord.Colour.dark_green())
     embed.set_footer(text=foot)
-    embed.set_image(url="https://cdn.discordapp.com/icons/762689124855447572/a_6766e912c05dbc60db79e8437727edd5.webp?size=128")
+    embed.set_thumbnail(url="https://cdn.discordapp.com/icons/762689124855447572/a_6766e912c05dbc60db79e8437727edd5.webp?size=128")
     await ctx.send(embed=embed)
 
 # Music
@@ -181,4 +182,5 @@ async def mongollland(ctx):
 # stop
 # resume
 # BackUp
-client.run(TOKEN)
+keep_alive()
+client.run(os.getenv('TOKEN'))

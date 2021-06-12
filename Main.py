@@ -57,7 +57,7 @@ async def joya_error(ctx, error):
 async def info(ctx):
     await ctx.channel.purge(limit=1)
     embed = discord.Embed(title=f"**{ctx.guild.name}**",
-                          description=f"**Owner:** {ctx.guild.owner}"
+                          description=f"**Bienvenidos al servidor!!!**\n"
                           f"**Miembros:** {ctx.guild.member_count}"
                           f"\n**Servidor creado el: "
                           f"\n**{ctx.guild.created_at}\n",
@@ -105,12 +105,12 @@ async def help(ctx):
         "**Comandos**\n.help (Todos los comandos en el servidor)"
         "\n.info (Información del servidor)\n.ppt (Piedra, Papel, Tijeras)"
         "\n.random10 (Número al azar del 0 al 10)\n.random100 (Número al azar del 0 al 100)"
-        "\n.repe (El bot repite lo que escribas)\n.mongollland (Información de MongollLand)",
+        "\n.repe (El bot repite lo que escribas)\n.didyouknow (Did You Know?)\n.mongollland (Información de MongollLand)",
         timestamp=datetime.datetime.utcnow(),
         color=discord.Colour.dark_blue())
     embed.add_field(
         name="**Info extra**",
-        value=">Bot creado por Tupei#9748\n"
+        value=">Bot creado por Tupei#0001\n"
         ">Disfrutad el bot!!!\n>Hay comandos secretos escondidos en el bot!\n"
               ">Si quieres una versión mejoradao la versión para moderar de este bot, contacta con Tupei",
         inline=True)
@@ -173,6 +173,20 @@ async def mongollland(ctx):
     embed.set_footer(text=foot)
     embed.set_thumbnail(url="https://cdn.discordapp.com/icons/762689124855447572/a_6766e912c05dbc60db79e8437727edd5.webp?size=128")
     await ctx.send(embed=embed)
+
+
+# did you know?
+@client.command()
+async def didyouknow(ctx):
+	await ctx.channel.purge(limit=1)
+	embed = discord.Embed(
+		title="Did You Know?",
+		description="Discord added a cool new way to use bot commands!\n一款默认表情符号。您可以在 Discord 的任意地方使用它",
+		timestamp=datetime.datetime.utcnow(),
+		color=discord.Colour.light_grey()
+	)
+	embed.set_footer(text=foot)
+	await ctx.send(embed=embed)
 
 # Music
 # join
